@@ -16,7 +16,10 @@ $navbar-default-bg: green;
   font-weight: bold;
 	margin-top: 5px;
 }
-
+#navbar-fixed-bottom{
+	background-image: asset-url('Background_1.jpg');
+	background-size: cover;
+}
 #bs-example-navbar-collapse-1{
 	flot:left;
   font-size: 1.7em;
@@ -27,7 +30,7 @@ $navbar-default-bg: green;
 
 }
 #logo:hover{
-   color: #fff;
+  color: #000;
   text-decoration: none;
 
 }
@@ -38,7 +41,7 @@ $navbar-default-bg: green;
 
 }
 .panel {
-		margin-top: 25px;
+		margin-top: 70px;
 }
 .jumbotron {
   background-image: asset-url('Background_1.jpg');
@@ -50,6 +53,7 @@ $navbar-default-bg: green;
 .nav{
 	margin-top: 5px;
 }
+
 .user-name {
 padding: 0 !important ;
 padding-left: 5px;
@@ -118,10 +122,10 @@ color: #fff;
 
 }
 .footer {
-  margin-top: 45px;
+	background-color:green;
+  margin-top: 105px;
   padding-top: 5px;
-  border-top: 1px solid #eaeaea;
-  color: #777;
+  border-top: 2px solid #eaeaea;
 }
 .footer a:hover{
   color: #222;
@@ -143,7 +147,9 @@ color: #fff;
   padding-top: 5px;
 
 }
-
+body {
+    background-color: lightblue;
+}
 .article-meta-details {
 border-top: 1px solid #eaeaea;
 margin-top: 15px;
