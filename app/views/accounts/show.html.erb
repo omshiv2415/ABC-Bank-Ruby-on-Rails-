@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @account.customer_id %>
+</p>
+
+<p>
+  <strong>Accounttype:</strong>
+  <%= @account.accountType %>
+</p>
+
+<p>
+  <strong>Balance:</strong>
+  <%= @account.balance %>
+</p>
+
+<p>
+  <strong>Minbalance:</strong>
+  <%= @account.minBalance %>
+</p>
+
+<p>
+  <strong>Branch:</strong>
+  <%= @account.branch %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @account.address %>
+</p>
+
+<p>
+  <strong>Dob:</strong>
+  <%= @account.dob %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @account.email %>
+</p>
+
+<p>
+  <strong>Postcode:</strong>
+  <%= @account.postcode %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @account.gender %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @account.name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @account.phone %>
+</p>
+
+<%= link_to 'Edit', edit_account_path(@account) %> |
+<%= link_to 'Back', accounts_path %>

@@ -1,0 +1,41 @@
+<%= render 'shared/errors', obj: @transaction %>
+<div class='row'>
+<div class='col-xs-12'>
+<%= form_for(@transaction, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+<div class="panel panel-default">
+	 <div class="panel-heading">
+		  <h4><%= t('.sign_in', :default => "Transactions") %></h4>
+		 </div>
+	<div class="panel-body">
+		<div class="form-group">
+			<%= f.label :Transaction_Type %><br>
+			<%= f.select :transType, options_for_select([['charge'],['check'],['Deposit'],['Transfer']],
+	     params[:transType]),{}, { class: "form-control"} %>
+
+  </div>
+  <div class="form-group">
+		<%= f.label :Transaction_Method %><br>
+		<%= f.select :method, options_for_select([['Mortgage'],['Purchases'],['Loan'],['Direct Debit'],
+	['Purchases'],['Student Loan'],['Direct Debit']], params[:transType]),{}, { class: "form-control"} %>
+  </div>
+  <div class="form-group">
+		<%= f.label :Transaction_Description %><br>
+		<%= f.text_field :description, autocomplete: "off", :placeholder => "Transfer Money to Family......", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :Transaction_Amount %><br>
+    <%= f.number_field :amount, autocomplete: "off", :placeholder => "£ 500 ", class: "form-control" %>
+  </div>
+  <div class="form-group">
+		<%= f.label :Beneficiary_Account_Number %><br>
+    <%= f.text_field :account_id, autocomplete: "off", :placeholder => "13936369 ",class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :employee_id %><br>
+    <%= f.text_field :employee_id, autocomplete: "off",:placeholder => " Viralkumar ", class: "form-control" %>
+  </div>
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+</div>
+<% end %>

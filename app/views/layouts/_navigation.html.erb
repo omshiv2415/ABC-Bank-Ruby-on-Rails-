@@ -53,7 +53,7 @@
 
 						<% if logged_in? and current_user.try(:admin?) %>
 						<li><%= link_to "Transfer Money", new_transaction_path %></li>
-	          <li><%= link_to "Statement", transactions_path %></li>
+	          <li><%= link_to "Statement", root_path %></li>
 						<% elsif logged_in? or current_user.try(:admin?) %>
 						<li><%= link_to "Customers", accounts_path %></li>
 						<li><%= link_to "Employee", employees_path %></li>

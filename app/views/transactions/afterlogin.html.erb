@@ -1,6 +1,8 @@
 <% if current_user %>
 <h3>Welcome: <%= current_user.email %></h3>
 
+<%= render 'transaction', obj: current_user.transactions %>
+
 <% else %>
 
 					<% if current_user.try(:admin?) %>

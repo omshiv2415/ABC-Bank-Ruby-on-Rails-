@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_id: 1
+  accountType: MyString
+  balance: 1.5
+  minBalance: 1.5
+  branch: MyString
+  address: MyString
+  dob: 2016-01-23
+  email: MyString
+  postcode: MyString
+  gender: MyString
+  name: MyString
+  phone: MyString
+
+two:
+  customer_id: 1
+  accountType: MyString
+  balance: 1.5
+  minBalance: 1.5
+  branch: MyString
+  address: MyString
+  dob: 2016-01-23
+  email: MyString
+  postcode: MyString
+  gender: MyString
+  name: MyString
+  phone: MyString
