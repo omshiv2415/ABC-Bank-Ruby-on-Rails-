@@ -6,6 +6,7 @@ class WelcomesController < ApplicationController
 		else current_user.try(:admin?)
 	      redirect_to accounts_path
 	 end
+
   end
 
 	def show
