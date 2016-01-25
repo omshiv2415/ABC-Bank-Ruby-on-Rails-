@@ -4,7 +4,12 @@ class AccountsController < ApplicationController
   # GET /accounts
   # GET /accounts.json
   def index
-    @accounts = Account.paginate(page: params[:page], per_page: 10)
+		if current_user.admin?
+			@accounts = Account.paginate(page: params[:page], per_page: 10)
+     #@transactions = Transaction.paginate(page: params[:page], per_page: 10)
+		else
+			@accountts = current_user.accounts.paginate(page: params[:page], per_page: 10)
+		end
   end
 
   # GET /accounts/1
@@ -25,8 +30,8 @@ class AccountsController < ApplicationController
   # POST /accounts.json
   def create
     @account = Account.new(account_params)
-
     respond_to do |format|
+			 @account.user = current_user
       if @account.save
         format.html { redirect_to @account, notice: 'Account was successfully created.' }
         format.json { render :show, status: :created, location: @account }

@@ -8,8 +8,14 @@ class TransactionsController < ApplicationController
   def index
 		#@currentUser = current_user.id
 		#@transactions = Transaction.where('user_id = currentUser.gets.chomp.to_i', params[:transactions])
-		@transactions = current_user.transactions
+		if current_user.admin?
+			@transactions = Transaction.paginate(page: params[:page], per_page: 10)
+
     #@transactions = Transaction.paginate(page: params[:page], per_page: 10)
+		else
+			@transactions = current_user.transactions.paginate(page: params[:page], per_page: 10)
+		end
+
   end
 
   # GET /transactions/1

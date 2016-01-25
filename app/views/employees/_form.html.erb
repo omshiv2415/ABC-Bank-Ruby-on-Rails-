@@ -1,41 +1,37 @@
-<%= form_for(@employee) do |f| %>
-  <% if @employee.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
-
-      <ul>
-      <% @employee.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
+<%= render 'shared/errors', obj: @employee %>
+<div class='row'>
+<div class='col-xs-12'>
+	<%= form_for(@employee, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+<div class="panel panel-default">
+	 <div class="panel-heading">
+		 <h4><%= t('.sign_in', :default => "Employees") %></h4>
+		 </div>
+  <div class="panel-body">
+		<div class="form-group">
     <%= f.label :fullname %><br>
-    <%= f.text_field :fullname %>
+    <%= f.text_field :fullname,:maxlength => 70,class: "form-control"%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :address %><br>
-    <%= f.text_field :address %>
+    <%= f.text_field :address, :maxlength => 150,class: "form-control"%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
+    <%= f.text_field :phone,:maxlength => 11, class: "form-control"%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :employeeRole %><br>
-    <%= f.text_field :employeeRole %>
+    <%= f.text_field :employeeRole, :maxlength => 30,class: "form-control"%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= f.text_field :email ,:maxlength => 50, class: "form-control"%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :branch %><br>
-    <%= f.text_field :branch %>
+    <%= f.text_field :branch, class: "form-control"%>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary"%>
   </div>
 <% end %>

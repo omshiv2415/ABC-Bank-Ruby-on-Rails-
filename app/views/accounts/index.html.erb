@@ -1,48 +1,5 @@
-<div class="page-header">
-    <h1>ABC Bank's Customers</h1>
-   <div class="contextual">
-  </div>
-</div>
-
-<table class="table table-striped table-bordered table-condensed">
-<thead>
-<tr>
-
-  <th colspan="1">Account Number</th>
-	<th colspan="1">Cutomer Name </th>
-  <th colspan="1">Account Type</th>
-  <th colspan="1">Availabel Balance</th>
-  <th colspan="1">Minimum Balance </th>
-	<th colspan="1">Branch </th>
-	<th colspan="1">Update </th>
-
-</tr>
-</thead>
-
-  <tbody>
-    <% @accounts.each do |account| %>
-      <tr>
-        <td><%= account.customer_id %></td>
-				<td><%= account.name %></td>
-        <td><%= account.accountType %></td>
-        <td><%= account.balance %></td>
-        <td><%= account.minBalance %></td>
-        <td><%= account.branch %></td>
-
-
-				<td><%= link_to 'View ', account %>
-				<%= link_to 'Update ', edit_account_path(account) %>
-				<%= link_to 'Close', account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-
-  </tbody>
-
-</table>
-<br/>
-<%= link_to 'Opne New Account', new_account_path %>
+<%= render 'accounts/account', obj: @accounts %>
 
 <div align="center">
 <%= will_paginate %>
 </div>
-

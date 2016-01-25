@@ -3,7 +3,8 @@ class WelcomesController < ApplicationController
   def index
 		if  current_user
 	      redirect_to transactions_path
-
+		else current_user.try(:admin?)
+	      redirect_to accounts_path
 	 end
   end
 

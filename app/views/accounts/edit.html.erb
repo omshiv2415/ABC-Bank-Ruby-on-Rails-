@@ -1,6 +1,64 @@
-<h1>Editing Account</h1>
+<%= render 'shared/errors', obj:@account %>
+<div class='row'>
+<div class='col-xs-12'>
+	<%= form_for(@account, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+<div class="panel panel-default">
+	 <div class="panel-heading">
+		 <h4><%= t('.sign_in', :default => "Update Account") %></h4>
+		 </div>
+	<div class="panel-body">
+  <div class="form-group">
+		<%= f.label :customer_Account_Number %><br>
+		<%= f.number_field :customer_id, :maxlength => 8,:readonly => true, class: "form-control" %>
+  </div>
+		<div class="form-group">
+		<%= f.label :Customer_Name %><br>
+			<%= f.text_field :name,:maxlength => 70, class: "form-control" %>
+  </div>
+		<div class="form-group">
+			<%= f.label :Gender %><br>
+			<%= f.select :gender, options_for_select([['Male'],['Female']], params[:gender]),{}, { :disabled => true,class: "form-control"} %>
+  </div>
+		<div class="form-group">
+		<%= f.label :Date_of_birth %><br>
+		<%= f.date_select :dob,:disabled => true, :start_year => Time.now.year - 1, :end_year => Time.now.year - 90, :order =>
+    [:day, :month, :year], class: "form-control" %>
+  </div>
+		<div class="form-group">
+		<%= f.label :Customer_Address %><br>
+			<%= f.text_field :address,:maxlength => 150, class: "form-control" %>
+  </div>
+		<div class="form-group">
+			<%= f.label :Postcode %><br>
+			<%= f.text_field :postcode,:maxlength => 7, class: "form-control" %>
+  </div>
+		<div class="form-group">
+		<%= f.label :Email_Address %><br>
+			<%= f.email_field :email, :maxlength => 50,class: "form-control" %>
+  </div>
+		<div class="form-group">
+			<%= f.label :Phone_Number %><br>
+			<%= f.number_field :phone, :maxlength => 11,class: "form-control" %>
+  </div>
+  <div class="form-group">
+		<%= f.label :Account_Type %>
+		<%= f.select :accountType, options_for_select([['Current Account'],['Savings Account'],['Student Account']], params[:accountType]),{}, { class: "form-control"} %>
+  </div>
+  <div class="form-group">
+		<%= f.label :Balance_Deposit_Amount %><br>
+    <%= f.number_field :balance, class: "form-control" %>
+  </div>
+  <div class="form-group">
+		<%= f.label :Overdraft %><br>
+    <%= f.number_field :minBalance, class: "form-control" %>
+  </div>
+  <div class="form-group">
+		<%= f.label :Branch_Name %><br>
+		<%= f.select :branch, options_for_select([['Kingston'], ['Croydon'], ['Kensington'], ['Birmingham'], ['Manchester'],
+	['Glasgow'], ['Ulster'], ['New Castle']], params[:branchname]), {}, { :class => "form-control"} %>
+	</div>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @account %> |
-<%= link_to 'Back', accounts_path %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

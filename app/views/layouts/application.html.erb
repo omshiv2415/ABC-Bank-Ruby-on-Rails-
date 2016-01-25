@@ -57,8 +57,8 @@
 
 						<% elsif current_user.try(:admin?) %>
 						<li><%= link_to "Customers", accounts_path %></li>
-						<li><%= link_to "Employee", employees_path %></li>
-						<li><%= link_to "Create Employee", new_employee_path %></li>
+						<li><%= link_to "Employees", employees_path %></li>
+						<li><%= link_to "Setup Employee", new_employee_path %></li>
 						<li><%= link_to "Open Account", new_account_path %></li>
 						<li><%= link_to "Deposit Money", new_transaction_path %></li>
             <% end %>
