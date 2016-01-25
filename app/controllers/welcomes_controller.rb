@@ -1,9 +1,16 @@
 class WelcomesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
   def index
-  @transaction = Transaction.paginate(page: params[:page], per_page: 15)
+		if  current_user
+	      redirect_to transactions_path
+
+	 end
   end
+
 	def show
-  @transaction = Transaction.paginate(page: params[:page], per_page: 15)
   end
+  def check
+		redirect_to transactions_path
+	end
+
 end

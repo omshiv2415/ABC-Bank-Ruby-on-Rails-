@@ -7,7 +7,9 @@ class ApplicationController < ActionController::Base
 
 	def logged_in?
 	!!current_user
-  end
+
+	end
+
 
 	def check_user_account
 		@account =  Account.all
@@ -19,6 +21,5 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
    end
  end
-
 
 end

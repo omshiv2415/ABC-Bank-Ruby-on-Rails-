@@ -9,7 +9,7 @@
 	<div class="panel-body">
 		<div class="form-group">
 			<%= f.label :Transaction_Type %><br>
-			<%= f.select :transType, options_for_select([['charge'],['check'],['Deposit'],['Transfer']],
+			<%= f.select :transType, options_for_select([['Deposit'],['Charge'],['Transfer']],
 	     params[:transType]),{}, { class: "form-control"} %>
 
   </div>

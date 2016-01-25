@@ -4,14 +4,21 @@ class TransactionsController < ApplicationController
 	before_action :require_same_user, only: [:edit, :update, :destroy]
   # GET /transactions
   # GET /transactions.json
+
   def index
-    @transactions = Transaction.paginate(page: params[:page], per_page: 10)
+		#@currentUser = current_user.id
+		#@transactions = Transaction.where('user_id = currentUser.gets.chomp.to_i', params[:transactions])
+		@transactions = current_user.transactions
+    #@transactions = Transaction.paginate(page: params[:page], per_page: 10)
   end
 
   # GET /transactions/1
   # GET /transactions/1.json
   def show
   end
+
+
+
 
   # GET /transactions/new
   def new
@@ -65,7 +72,7 @@ class TransactionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_transaction
-      @transaction = Transaction.find(params[:id])
+			@transaction = Transaction.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -9,7 +9,7 @@
 	<div class="panel-body">
   <div class="form-group">
 		<%= f.label :customer_Account_Number %><br>
-    <%= f.number_field :customer_id, :readonly => true, :value => rand(1..200000000).to_s, class: "form-control" %>
+		<%= f.number_field :customer_id, :size=>8,:readonly => true, :value => rand(1..90000001).to_s, class: "form-control" %>
   </div>
 		<div class="form-group">
 		<%= f.label :Customer_Name %><br>
