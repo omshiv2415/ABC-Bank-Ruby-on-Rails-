@@ -5,7 +5,7 @@ class Account < ActiveRecord::Base
 
   validates :customer_id, presence: true, length:{minimum:8}
 	validates :accountType, presence: true
-	validates :balance, presence: true, length: {minimum:1, maximum:15},
+	validates :balance, presence: true, length: {minimum:1, maximum:15}
 	validates :minBalance, presence: true,length: {minimum:1, maximum:5}
 	validates :branch, presence: true
 	validates :name, presence: true
