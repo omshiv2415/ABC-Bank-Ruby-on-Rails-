@@ -10,7 +10,6 @@ class ApplicationController < ActionController::Base
 
 	end
 
-
 	def check_user_account
 		@account =  Account.all
 	end

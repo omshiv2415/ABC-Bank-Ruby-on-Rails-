@@ -1,6 +1,7 @@
 class TransactionsController < ApplicationController
+	skip_before_action :authenticate_user!, only: [:index]
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
-	before_action :require_user, except: [:index, :show, :afterlogin]
+	before_action :require_user, except: [:index, :show,]
 	before_action :require_same_user, only: [:edit, :update, :destroy]
   # GET /transactions
   # GET /transactions.json

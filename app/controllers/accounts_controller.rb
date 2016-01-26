@@ -1,14 +1,15 @@
 class AccountsController < ApplicationController
   before_action :set_account, only: [:show, :edit, :update, :destroy]
-
   # GET /accounts
   # GET /accounts.json
   def index
-		if current_user.admin?
+
+		if current_user.try(:admin?)
 			@accounts = Account.paginate(page: params[:page], per_page: 10)
-     #@transactions = Transaction.paginate(page: params[:page], per_page: 10)
+
+    #@transactions = Transaction.paginate(page: params[:page], per_page: 10)
 		else
-			@accountts = current_user.accounts.paginate(page: params[:page], per_page: 10)
+			@accounts = current_user.accounts.paginate(page: params[:page], per_page: 10)
 		end
   end
 
