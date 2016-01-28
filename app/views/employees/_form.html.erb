@@ -28,9 +28,10 @@
     <%= f.text_field :email ,:maxlength => 50, class: "form-control"%>
   </div>
   <div class="form-group">
-    <%= f.label :branch %><br>
-    <%= f.text_field :branch, class: "form-control"%>
-  </div>
+		<%= f.label :Branch_Name %><br>
+		<%= f.select :branch, options_for_select([['Kingston'], ['Croydon'], ['Kensington'], ['Birmingham'], ['Manchester'],
+	['Glasgow'], ['Ulster'], ['New Castle']], params[:branch]), {}, { :class => "form-control"} %>
+	</div>
   <div class="actions">
     <%= f.submit class: "btn btn-primary"%>
   </div>

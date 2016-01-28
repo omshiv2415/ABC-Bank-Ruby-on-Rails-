@@ -1,15 +1,16 @@
 class AccountsController < ApplicationController
   before_action :set_account, only: [:show, :edit, :update, :destroy]
+
   # GET /accounts
   # GET /accounts.json
   def index
 
 		if current_user.try(:admin?)
-			@accounts = Account.paginate(page: params[:page], per_page: 10)
+			@accounts = Account.paginate(page: params[:page], per_page: 2)
 
     #@transactions = Transaction.paginate(page: params[:page], per_page: 10)
-		else
-			@accounts = current_user.accounts.paginate(page: params[:page], per_page: 10)
+		elsif
+			@accounts = current_user.accounts.paginate(page: params[:page], per_page: 2)
 		end
   end
 
@@ -75,6 +76,6 @@ class AccountsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def account_params
-      params.require(:account).permit(:customer_id, :accountType, :balance, :minBalance, :branch, :address, :dob, :email, :postcode, :gender, :name, :phone)
+			params.require(:account).permit(:customer_id, :accountType, :balance, :minBalance, :branchName, :address, :dob, :email, :postcode, :gender, :name, :phone)
     end
 end

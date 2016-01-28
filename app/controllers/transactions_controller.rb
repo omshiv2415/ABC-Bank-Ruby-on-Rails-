@@ -13,8 +13,10 @@ class TransactionsController < ApplicationController
 			@transactions = Transaction.paginate(page: params[:page], per_page: 10)
 
     #@transactions = Transaction.paginate(page: params[:page], per_page: 10)
-		else
-			@transactions = current_user.transactions.paginate(page: params[:page], per_page: 10)
+		elsif current_user
+			@transactions = current_user.transactions.paginate(page: params[:page], per_page: 5)
+			#@accounts = current_user.accounts.paginate(page: params[:page], per_page: 10)
+			#@accounts = Account.find(1)
 		end
 
   end

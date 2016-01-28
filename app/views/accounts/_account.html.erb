@@ -1,5 +1,5 @@
 <div class="page-header">
-    <h1>ABC Bank's Customers</h1>
+
    <div class="contextual">
   </div>
 </div>
@@ -27,7 +27,7 @@
         <td><%= account.accountType %></td>
         <td><%= account.balance %></td>
         <td><%= account.minBalance %></td>
-        <td><%= account.branch %></td>
+        <td><%= account.branchName %></td>
 
 
 				<td><%= link_to 'View ', account %>
@@ -43,6 +43,6 @@
 <%= link_to 'Opne New Account', new_account_path %>
 
 <div align="center">
-<%= will_paginate %>
+
 </div>
 

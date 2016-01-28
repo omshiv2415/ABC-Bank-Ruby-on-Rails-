@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Abc Bank" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "ABC Bank" %></title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag "application", :media => "all" %>
@@ -53,14 +53,15 @@
 
 						<% if logged_in? and not current_user.try(:admin?) %>
 						<li><%= link_to "Transfer Money", new_transaction_path %></li>
-	          <li><%= link_to "Statement", root_path %></li>
+	          <li><%= link_to "Statement", transactions_path %></li>
 
 						<% elsif current_user.try(:admin?) %>
-						<li><%= link_to "Customers", accounts_path %></li>
 						<li><%= link_to "Employees", employees_path %></li>
 						<li><%= link_to "Setup Employee", new_employee_path %></li>
 						<li><%= link_to "Open Account", new_account_path %></li>
 						<li><%= link_to "Deposit Money", new_transaction_path %></li>
+						<li><%= link_to "Transactions", transactions_path %></li>
+						<li><%= link_to "Open Branch", new_branch_path %></li>
             <% end %>
           </ul>
 					<ul class="nav navbar-right col-md-4">
@@ -72,7 +73,7 @@
 					</li>
 					<li class="col-md-1"> </li>
 					<li class="col-md-3 logout"><%= link_to('Logout', destroy_user_session_path,
-					class: 'btn btn-xs btn-danger', title: 'Logout', :method => :delete) %></li>
+					class: 'btn btn-xs btn-danger', title: 'Logout', :method => :delete) %>
 					<% elsif current_user %>
 					<li class="col-md-8 user-name">
 
@@ -81,7 +82,8 @@
 					</li>
 					<li class="col-md-1"> </li>
 					<li class="col-md-3 logout"><%= link_to('Logout', destroy_user_session_path,
-					class: 'btn btn-xs btn-danger', title: 'Logout', :method => :delete) %></li>
+					class: 'btn btn-xs btn-danger', title: 'Logout', :method => :delete) %>
+
 					<% else %>
 					<li class="col-md-4 pull-right">
 					<%= link_to('Sign In', new_user_session_path, class: 'btn btn-primary', title: 'Sign In') %>
@@ -101,7 +103,7 @@
        </div><!--/row-->
       </div> <!-- /container -->
 		 <div class="footer navbar-fixed-bottom secondary">
-     <p align="center"> MSc Software Engineering Kingston University Software Architecture and Programming Models &copy; Viralkumar Patel 2016</p>
+     <p align="center" style="color:white;"> MSc Software Engineering Kingston University Software Architecture and Programming Models &copy; Viralkumar Patel 2016</p>
     </div>
   </body>
 

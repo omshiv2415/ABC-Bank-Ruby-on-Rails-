@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Branchname:</strong>
+  <%= @branch.branchName %>
+</p>
+
+<p>
+  <strong>Branchlocation:</strong>
+  <%= @branch.branchLocation %>
+</p>
+
+<p>
+  <strong>Branchpostcode:</strong>
+  <%= @branch.branchPostcode %>
+</p>
+
+<%= link_to 'Edit', edit_branch_path(@branch) %> |
+<%= link_to 'Back', branches_path %>

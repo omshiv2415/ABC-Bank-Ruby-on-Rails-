@@ -8,16 +8,24 @@
 		 </div>
 	<div class="panel-body">
 		<div class="form-group">
+	<% if current_user.try(:admin?) %>
 			<%= f.label :Transaction_Type %><br>
 			<%= f.select :transType, options_for_select([['Deposit'],['Charge'],['Transfer']],
 	     params[:transType]),{}, { class: "form-control"} %>
-
   </div>
+		<% elsif current_user %>
+			<%= f.label :Transaction_Type %><br>
+			<%= f.select :transType, options_for_select([['Deposit'],['Transfer']],
+	     params[:transType]),{}, { class: "form-control"} %>
+  </div>
+		<% end %>
+	<% if current_user.try(:admin?) %>
   <div class="form-group">
 		<%= f.label :Transaction_Method %><br>
 		<%= f.select :method, options_for_select([['Mortgage'],['Purchases'],['Loan'],['Direct Debit'],
 	['Purchases'],['Student Loan'],['Direct Debit']], params[:transType]),{}, { class: "form-control"} %>
   </div>
+		<% end %>
   <div class="form-group">
 		<%= f.label :Transaction_Description %><br>
 		<%= f.text_field :description, :maxlength => 150, autocomplete: "off", :placeholder => "Transfer Money to Family......", class: "form-control" %>
@@ -30,10 +38,12 @@
 		<%= f.label :Beneficiary_Account_Number %><br>
 		<%= f.number_field :account_id, :maxlength => 8, autocomplete: "off", :placeholder => "13936369 ",class: "form-control" %>
   </div>
+	<% if current_user.try(:admin?) %>
   <div class="form-group">
     <%= f.label :employee_id %><br>
 		<%= f.text_field :employee_id, :maxlength => 35,autocomplete: "off",:placeholder => " Viralkumar ", class: "form-control" %>
   </div>
+	<% end %>
   <div class="actions">
     <%= f.submit class: "btn btn-primary" %>
   </div>

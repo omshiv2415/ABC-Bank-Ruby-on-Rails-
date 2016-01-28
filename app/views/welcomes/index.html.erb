@@ -1,8 +1,13 @@
-<% if current_user %>
-<h3 align="center">Welcome: <%= current_user.email %></h3>
+<% if current_user.try(:admin?) %>
+<h1 align="center">ABC Bank's No of Accounts <%= @accounts.count %></h1>
+
+<%= render 'accounts/account', obj: @accounts %>
+
+<% elsif current_user%>
+<h1 align="center">Total Transactions <%= @transactions.count %></h1>
+<%= render 'transactions/transaction', obj: @transactions%>
 
 <% else %>
-
 <div class="center jumbotron">
 <h2 align="center">Welcome to the ABC Bank Internet Banking</h2>
 <br><br><br><br>

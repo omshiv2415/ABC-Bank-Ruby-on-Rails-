@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  branchName: MyString
+  branchLocation: MyString
+  branchPostcode: MyString
+
+two:
+  branchName: MyString
+  branchLocation: MyString
+  branchPostcode: MyString

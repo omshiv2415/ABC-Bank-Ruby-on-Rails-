@@ -1,0 +1,25 @@
+<%= render 'shared/errors', obj:@branch %>
+<div class='row'>
+<div class='col-xs-12'>
+	<%= form_for(@branch, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+<div class="panel panel-default">
+	 <div class="panel-heading">
+		 <h4><%= t('.sign_in', :default => "Open Branch") %></h4>
+		 </div>
+	<div class="panel-body">
+	<div class="form-group">
+    <%= f.label :branchName %><br>
+    <%= f.text_field :branchName, :maxlength => 70, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :branchLocation %><br>
+    <%= f.text_field :branchLocation, :maxlength => 70, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :branchPostcode %><br>
+    <%= f.text_field :branchPostcode, :maxlength => 7, class: "form-control" %>
+  </div>
+  <div class="actions">
+    <%= f.submit  class: "btn btn-primary" %>
+  </div>
+<% end %>

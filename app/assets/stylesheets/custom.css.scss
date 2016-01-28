@@ -21,7 +21,7 @@ $navbar-default-bg: green;
 	margin-left: 15px;
 }
 #navbar-fixed-bottom{
-	background-image: asset-url('Background_1.jpg');
+
 	background-size: cover;
 }
 .form-group{
@@ -43,14 +43,16 @@ $navbar-default-bg: green;
   text-decoration: none;
 
 }
+.align{
 
+}
 .center{
   text-align: center;
 	image-align: center;
 
 }
 .panel {
-		margin-top: 70px;
+		margin-top: 40px;
 }
 .jumbotron {
   background-image: asset-url('Background_1.jpg');
