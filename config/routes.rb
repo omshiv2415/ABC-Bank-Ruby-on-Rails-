@@ -1,17 +1,18 @@
 Rails.application.routes.draw do
 
 
-
+  devise_for :users
   resources :branches
   resources :transactions
   resources :employees
   resources :accounts
-  get 'home/index'
- # get 'welcome/index'
-  devise_for :users
-	root 'branches#index'
+	resources :home
 
-	#root 'transactions#afterlogin'
+ # get 'welcome/index'
+
+	root 'home#index'
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
