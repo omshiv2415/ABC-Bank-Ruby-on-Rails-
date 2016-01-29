@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'home/index'
+
 
   resources :branches
   resources :transactions
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'home/index'
  # get 'welcome/index'
   devise_for :users
-	root 'home#index'
+	root 'branches#index'
 
 	#root 'transactions#afterlogin'
 
