@@ -1,11 +1,12 @@
 <% if current_user.try(:admin?) %>
-<h1 align="center">ABC Bank's No of Accounts <%= @accounts.count %></h1>
+<h3 align="center">ABC Bank's No of Accounts <%= @accounts.count %></h3>
 
 <%= render 'accounts/account', obj: @accounts %>
 
 <% elsif current_user%>
-<h1 align="center">Total Transactions <%= @transactions.count %></h1>
+
 <%= render 'transactions/transaction', obj: @transactions%>
+
 
 <% else %>
 <div class="center jumbotron">

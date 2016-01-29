@@ -21,11 +21,5 @@ class ApplicationController < ActionController::Base
    end
  end
 
-def get_Customer_Account
-    if customer_signed_in?
-			@accountsByCust = Account.where(:user_id => current_customer.id)
-    return @accountsByCust
-    end
-  end
 
 end

@@ -8,8 +8,8 @@
   <%= @transaction.transType %>
 </p>
 <p>
-  <strong>Method:</strong>
-  <%= @transaction.method %>
+  <strong>Description:</strong>
+	<%= @transaction.description %>
 </p>
 <p>
   <strong>Amount:</strong>
@@ -17,14 +17,10 @@
 </p>
 
 <p>
-  <strong>Account:</strong>
+  <strong>Beneficiary Account Number:</strong>
 	<%= @transaction.account_id %>
 </p>
 
-<p>
-  <strong>Employee:</strong>
-	<%= @transaction.employee_id%>
-</p>
   </div>
   </div>
 </div>

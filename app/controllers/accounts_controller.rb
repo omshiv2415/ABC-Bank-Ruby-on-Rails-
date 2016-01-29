@@ -6,11 +6,13 @@ class AccountsController < ApplicationController
   def index
 
 		if current_user.try(:admin?)
-			@accounts = Account.paginate(page: params[:page], per_page: 2)
+
+			@accounts = Account.order(:name)
 
     #@transactions = Transaction.paginate(page: params[:page], per_page: 10)
 		elsif
-			@accounts = current_user.accounts.paginate(page: params[:page], per_page: 2)
+			@accounts = current_user.accounts.order(:name).paginate(page: params[:page], per_page: 15)
+
 		end
   end
 
@@ -72,10 +74,12 @@ class AccountsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_account
       @account = Account.find(params[:id])
+			@balance = Account.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def account_params
-			params.require(:account).permit(:customer_id, :accountType, :balance, :minBalance, :branchName, :address, :dob, :email, :postcode, :gender, :name, :phone)
+			params.require(:account).permit(:customer_id, :accountType, :balance, :overdraft, :branchName, :address, :dob, :email, :postcode, :gender, :name, :phone)
+
     end
 end

@@ -1,22 +1,31 @@
 class TransactionsController < ApplicationController
+
 	skip_before_action :authenticate_user!, only: [:index]
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
 	before_action :require_user, except: [:index, :show,]
 	before_action :require_same_user, only: [:edit, :update, :destroy]
+
   # GET /transactions
   # GET /transactions.json
 
   def index
-		#@currentUser = current_user.id
+
 		#@transactions = Transaction.where('user_id = currentUser.gets.chomp.to_i', params[:transactions])
 		if current_user.admin?
-			@transactions = Transaction.paginate(page: params[:page], per_page: 10)
+			@transactions = Transaction.all.order(created_at: :desc).paginate(page: params[:page], per_page: 15)
 
     #@transactions = Transaction.paginate(page: params[:page], per_page: 10)
 		elsif current_user
-			@transactions = current_user.transactions.paginate(page: params[:page], per_page: 5)
-			#@accounts = current_user.accounts.paginate(page: params[:page], per_page: 10)
-			#@accounts = Account.find(1)
+
+			@transactions = current_user.transactions.all.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+
+		   @accounts =  Account.find(current_user).balance
+			 @balance = @accounts
+		 	@accounts =  Account.find(current_user).overdraft
+		 	 @overdraft = @accounts
+		   @accounts =  Account.find(current_user).name
+			 @name = @accounts
+
 		end
 
   end
@@ -25,7 +34,6 @@ class TransactionsController < ApplicationController
   # GET /transactions/1.json
   def show
   end
-
 
 
 
@@ -86,7 +94,7 @@ class TransactionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def transaction_params
-      params.require(:transaction).permit(:transType, :method, :description, :amount, :account_id, :employee_id)
+      params.require(:transaction).permit(:transType, :method, :description, :amount, :account_id, :employee_id, :balance)
     end
 	def  require_same_user
 			if current_user != @transaction.user
