@@ -83,3 +83,118 @@ or
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+== README
+
+This is test application of ruby on rails
+Important command
+* rvm reinstall ruby-2.2.1
+* rake db:migrate
+* rails server -b 0.0.0
+* rake routes
+* rails generate scaffold Article title:string description:text
+* rails generate migration create_users
+* git commit -m "type message to commit"
+* git add -A
+* rails new project name
+* cd "change directory" and cd .. go to back directory
+* heroku keys:add
+* heroku create
+* heroku login
+* bundle install --without production
+* cat ~/.ssh/id_rsa.pub "getting public key"
+* git config --global user.email "omshiv2415@yahoo.co.uk"
+* git config --global user.name "omshiv2415"
+* git checkout -f
+* git config
+* rails g bootstrap:install
+// drop talble
+go to rails console
+ActiveRecord::Migration.drop_table(:users)
+
+// setup git directory
+
+git init
+git add -A
+git commit -m "new project created"
+git checkout -f
+git status
+
+1. get the key by typing command inside command line
+cat ~/.ssh/id_rsa.pub
+
+2. add shh key to github account inside setting
+copy the key and paste in settings SSH key
+
+3. create new repository on github account
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin git@github.com:omshiv2415/exercise_ruby.git
+git push -u origin master
+
+git checkout -b create-users
+rails generate migration create_users
+//add
+
+// Deploy ruby application to heroku
+
+1 open gemfile inside your project
+move gem 'sqlite3' to group :development, :test do
+
+2. create new grup
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
+
+3. bundle install --without production
+
+4. install nitrous environment toolbelt
+wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+
+5. heroku login
+enter email and password
+
+6. heroku create
+
+7. heroku keys:add
+
+8. git push heroku master
+
+9. heroku run rake db:migrate
+
+
+10. Deploy changes
+cd
+11. heroku apps:rename msc-abc-bank
+ git add -A
+ git commit -am "make it better"
+ git push heroku master
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
+* rails destroy scaffold  Comment
+
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.
+rails generate migration add_user_id_to_articles
