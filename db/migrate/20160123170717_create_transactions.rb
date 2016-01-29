@@ -7,6 +7,7 @@ class CreateTransactions < ActiveRecord::Migration
       t.float :amount
       t.integer :account_id
       t.integer :employee_id
+			t.integer :user_id
 
       t.timestamps null: false
     end

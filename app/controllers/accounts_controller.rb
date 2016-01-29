@@ -7,7 +7,8 @@ class AccountsController < ApplicationController
 
 		if current_user.try(:admin?)
 
-			@accounts = Account.order(:name)
+			@accounts = Account.order(:name).paginate(page: params[:page], per_page: 15)
+
 
     #@transactions = Transaction.paginate(page: params[:page], per_page: 10)
 		elsif
@@ -74,7 +75,6 @@ class AccountsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_account
       @account = Account.find(params[:id])
-			@balance = Account.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

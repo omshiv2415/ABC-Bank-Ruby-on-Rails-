@@ -4,8 +4,8 @@ class CreateAccounts < ActiveRecord::Migration
       t.integer :customer_id
       t.string :accountType
       t.float :balance
-      t.float :minBalance
-      t.string :branch
+			t.float :overdraft
+      t.string :branchName
       t.string :address
       t.date :dob
       t.string :email
@@ -13,6 +13,7 @@ class CreateAccounts < ActiveRecord::Migration
       t.string :gender
       t.string :name
       t.string :phone
+			t.integer :user_id
 
       t.timestamps null: false
     end
