@@ -6,10 +6,11 @@ Rails.application.routes.draw do
   resources :transactions
   resources :employees
   resources :accounts
-
+  get 'home/index'
  # get 'welcome/index'
   devise_for :users
 	root 'home#index'
+
 	#root 'transactions#afterlogin'
 
   # The priority is based upon order of creation: first created -> highest priority.
