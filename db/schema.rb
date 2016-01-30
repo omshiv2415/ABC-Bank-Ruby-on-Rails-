@@ -57,9 +57,9 @@ ActiveRecord::Schema.define(version: 20160129111642) do
     t.float    "amount"
     t.integer  "account_id"
     t.integer  "employee_id"
+		t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "user_id"
   end
 
   create_table "users", force: :cascade do |t|

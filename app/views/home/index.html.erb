@@ -1,15 +1,14 @@
 <% if current_user.try(:admin?) %>
 <h3 align="center">ABC Bank's Total Number of Accounts: <%= @accounts.count %></h3>
-   <% if @accounts.blank? %>
-<%= render 'accounts/account', obj: @accounts %>
-    <% else %>
-    <h2>Welcome to the ABC Bank Internet Banking</h2>
-    <% end %>
+
+    <%= render 'accounts/account', obj: @accounts %>
+
 <% elsif current_user%>
  <% if @transactions.blank? %>
-   <h2>Welcome to the ABC Bank Internet Banking</h2>
+    <h2 align="center">Welcome to the ABC Bank Internet Banking</h2>
+    <h2 align="center">Please wait for the Account Setup Please visit our nearest branch</h2>
     <% else %>
-<%= render 'transactions/transaction', obj: @transactions%>
+    <%= render 'transactions/transaction', obj: @transactions%>
     <% end %>
 <% else %>
 <div class="center jumbotron">
