@@ -3,12 +3,7 @@
 
 <%= render 'accounts/account', obj: @accounts %>
 
-<% elsif current_user%>
-
-<%= render 'transactions/transaction', obj: @transactions%>
-
-
-<% else %>
+<% end %>
 <div class="center jumbotron">
 <h2 align="center">Welcome to the ABC Bank Internet Banking</h2>
 <br><br><br><br>
@@ -26,4 +21,3 @@
 <div class="features">
 <ul>
 
-<% end %>
