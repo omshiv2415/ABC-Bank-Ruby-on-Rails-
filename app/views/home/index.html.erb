@@ -1,3 +1,29 @@
+<% if current_user %>
+<h3 align="center">Welcome: <%= current_user.email %></h3>
+
+<%= render 'transaction', obj: current_user.transactions %>
+
+<% else %>
+
+					<% if current_user.try(:admin?) %>
+					<li class="col-md-8 user-name">
+					<%= link_to edit_user_registration_path, title: 'Edit Profile' %>
+					<h6>Admin</h6>
+					</li>
+					<li class="col-md-1"> </li>
+					<li class="col-md-3 logout"><%= link_to('Logout', destroy_user_session_path,
+					class: 'btn btn-xs btn-danger', title: 'Logout', :method => :delete) %></li>
+					<% elsif current_user %>
+					<li class="col-md-8 user-name">
+					<%= link_to ('<i class="fa fa-user"></i> ' + truncate(current_user.email, length: 25)).html_safe,
+					edit_user_registration_path, title: 'Edit Profile' %>
+					</li>
+					<li class="col-md-1"> </li>
+					<li class="col-md-3 logout"><%= link_to('Logout', destroy_user_session_path,
+					class: 'btn btn-xs btn-danger', title: 'Logout', :method => :delete) %></li>
+					<% else %>
+
+					<% end %>
 
 <div class="center jumbotron">
 <h2 align="center">Welcome to the ABC Bank Internet Banking</h2>
