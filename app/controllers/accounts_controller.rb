@@ -6,15 +6,14 @@ class AccountsController < ApplicationController
   def index
 
 		if current_user.try(:admin?)
-
 			@accounts = Account.order(:name).paginate(page: params[:page], per_page: 15)
-
 
     #@transactions = Transaction.paginate(page: params[:page], per_page: 10)
 		elsif
 			@accounts = current_user.accounts.order(:name).paginate(page: params[:page], per_page: 15)
 
 		end
+
   end
 
   # GET /accounts/1
@@ -25,6 +24,10 @@ class AccountsController < ApplicationController
   # GET /accounts/new
   def new
     @account = Account.new
+		@find = User.all
+		@set_user_account = @find.where("sign_in_count < '2'")
+		#@comments = @post.comments.where("user_id != ''")
+		#@array = User.where(:email, :id.nil?)
   end
 
   # GET /accounts/1/edit
@@ -36,7 +39,6 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(account_params)
     respond_to do |format|
-			 @account.user = current_user
       if @account.save
         format.html { redirect_to @account, notice: 'Account was successfully created.' }
         format.json { render :show, status: :created, location: @account }
@@ -79,7 +81,8 @@ class AccountsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def account_params
-			params.require(:account).permit(:customer_id, :accountType, :balance, :overdraft, :branchName, :address, :dob, :email, :postcode, :gender, :name, :phone)
+			params.require(:account).permit(:customer_id, :user_id, :accountType, :balance, :overdraft, :branchName, :address, :dob, :email, :postcode, :gender, :name, :phone,
+				                       transactions_attributes: [:transType, :method, :description, :amount, :account_id, :employee_id, :t_balance, :total_balance])
 
     end
 end

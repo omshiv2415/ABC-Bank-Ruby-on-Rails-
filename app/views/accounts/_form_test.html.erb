@@ -34,9 +34,9 @@
   </div>
 		<div class="form-group">
 			<%= f.label :Email_Address_Please_ask_customer_Internet_Register_Email_and_Select_From_Following_List %><br>
-			<%= f.collection_select :email, @set_user_account, :id, :email, { prompt: "Select Customer Email Address"}, { :class => "form-control"} %>
-
-
+			<%= f.collection_select :email, @array, :id, :email, prompt: "Select Category" %>
+			<%= f.select :email, options_for_select(@array.map{ |c| [c.email, c.id, {'data-option-dependent' => true,
+	'data-option-observed' => 'user_id'}] }),{}, { class: "form-control"} %>
   </div>
 		<div class="form-group">
 			<%= f.label :Phone_Number %><br>

@@ -10,22 +10,26 @@ class TransactionsController < ApplicationController
 
   def index
 
-		#@transactions = Transaction.where('user_id = currentUser.gets.chomp.to_i', params[:transactions])
 		if current_user.admin?
 			@transactions = Transaction.all.order(created_at: :desc).paginate(page: params[:page], per_page: 15)
 
-    #@transactions = Transaction.paginate(page: params[:page], per_page: 10)
-		elsif current_user
 
-			@transactions = current_user.transactions.all.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+		 elsif current_user
 
-		   @accounts =  Account.find(current_user).balance
+			 @transactions = current_user.transactions.all.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+
+
+			 @accounts =  Account.find(current_user).balance
 			 @balance = @accounts
-		 	@accounts =  Account.find(current_user).overdraft
+
+		   @accounts =  Account.find(current_user).overdraft
 		 	 @overdraft = @accounts
-		   @accounts =  Account.find(current_user).name
+
+			 @accounts =  Account.find(current_user).name
 			 @name = @accounts
 
+			 @accounts =  Account.find(current_user).customer_id
+		 	 @account_number =  @accounts
 		end
 
   end
@@ -52,7 +56,7 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.new(transaction_params)
     respond_to do |format|
 			@transaction.user = current_user
-      if @transaction.save
+			if @transaction.save
         format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
         format.json { render :show, status: :created, location: @transaction }
       else
@@ -94,7 +98,9 @@ class TransactionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def transaction_params
-      params.require(:transaction).permit(:transType, :method, :description, :amount, :account_id, :employee_id, :balance)
+      params.require(:transaction).permit(:transType, :method, :description, :amount, :account_id, :employee_id,
+				             :t_balance, :total_balance, account_attributes: [:customer_id, :accountType, :balance, :overdraft,
+										 :branchName, :address, :dob, :email, :postcode, :gender, :name, :phone])
     end
 	def  require_same_user
 			if current_user != @transaction.user

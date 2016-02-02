@@ -17,6 +17,13 @@ $navbar-default-bg: green;
 	margin-top: 2px;
 
 }
+table.table-bordered
+{
+	border:1px solid green;
+}
+table.table-striped {
+border:1px solid green;
+}
 .image_tag{
 	margin-left: 15px;
 }
