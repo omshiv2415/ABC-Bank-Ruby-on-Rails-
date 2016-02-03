@@ -55,7 +55,7 @@
   <div class="form-group">
 		<%= f.label :Branch_Name %><br>
 		<%= f.select :branchName, options_for_select([['Kingston'], ['Croydon'], ['Kensington'], ['Birmingham'], ['Manchester'],
-	['Glasgow'], ['Ulster'], ['New Castle']], params[:branchName]), {}, { :class => "form-control"} %>
+	['Glasgow'], ['Ulster'], ['New Castle']], params[:branchName]), {}, {:disabled => true, :class => "form-control"} %>
 	</div>
 
   <div class="actions">

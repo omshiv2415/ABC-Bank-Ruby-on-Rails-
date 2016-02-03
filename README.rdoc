@@ -1,5 +1,30 @@
 == README
 ABC Banks Application (Ruby on Rails) Msc Software Engineering
+1. ABC Banking Project Download link from GitHub
+
+https://github.com/omshiv2415/ABC-Bank-Ruby-on-Rails-
+
+2. View Application Online
+
+https://abcbankmsc.herokuapp.com
+
+3. Setup Guide Instruction to run this project.
+
+1. Download the project file form GitHub or clone the repository
+
+git@github.com:omshiv2415/ABC-Bank-Ruby-on-Rails-.git
+
+2. Type the following command in you console but make sure you are in project directory
+
+Command – bundle install  -- without production (please type the command don’t do copy paste)
+
+3. Type the following command for data migration (create database)
+
+Command – rake db:migrate
+
+4. Run Rails server to view this project in production.
+
+Command – rails server –b 0.0.0.0
 
 
 Things you may want to cover:

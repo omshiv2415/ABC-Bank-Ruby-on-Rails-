@@ -12,24 +12,14 @@ class TransactionsController < ApplicationController
 
 		if current_user.admin?
 			@transactions = Transaction.all.order(created_at: :desc).paginate(page: params[:page], per_page: 15)
-
-
 		 elsif current_user
-
 			 @transactions = current_user.transactions.all.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
-
-
 			 @accounts =  Account.find(current_user).balance
 			 @balance = @accounts
-
 		   @accounts =  Account.find(current_user).overdraft
 		 	 @overdraft = @accounts
-
 			 @accounts =  Account.find(current_user).name
 			 @name = @accounts
-
-			 @accounts =  Account.find(current_user).customer_id
-		 	 @account_number =  @accounts
 		end
 
   end
@@ -49,13 +39,18 @@ class TransactionsController < ApplicationController
   # GET /transactions/1/edit
   def edit
   end
-
+	def total_balance
+		  @cal =  Account.find(current_user).balance
+			@total_balance = @cal - amount
+		  @total_balance = total_balance
+	end
   # POST /transactions
   # POST /transactions.json
   def create
     @transaction = Transaction.new(transaction_params)
     respond_to do |format|
 			@transaction.user = current_user
+
 			if @transaction.save
         format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
         format.json { render :show, status: :created, location: @transaction }

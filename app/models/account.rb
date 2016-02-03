@@ -8,7 +8,7 @@ class Account < ActiveRecord::Base
   validates :customer_id, presence: true, length:{minimum:8}
 	validates :accountType, presence: true, length: {minimum:1, maximum:15}
 	validates :balance, presence: true, length: {minimum:1, maximum:15}
-	validates :overdraft, presence: true,length: {minimum:1, maximum:5}
+	validates :overdraft, presence: true,length: {minimum:1, maximum:8}
 	validates :address, presence: true, length: {minimum:1, maximum:115}
 	validates :dob, presence: true
 	#validates :email, presence: true, length: {minimum:6, maximum:70}

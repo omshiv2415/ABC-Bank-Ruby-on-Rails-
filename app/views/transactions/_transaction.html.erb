@@ -4,9 +4,6 @@
 	<h5 align="left">Account Number: <%= Account.find(current_user).customer_id %></h5>
 	<h5 align="left">Available Balance: <%= @balance %></h5>
 	<h5 align="left">Overdraft: <%= @overdraft %></h5>
-
-
-
 	<% end %>
    <div class="contextual">
   </div>
@@ -35,14 +32,10 @@
 				<td><%= transaction.total_balance %>
 	      <% end %>
 				<% if current_user.try(:admin?) %>
-
 			  <% end %>
 				<td><%= transaction.created_at.strftime("%d %b %Y %H:%M:%S") %>
-
         </td>
-
         <% end %>
-
       <tr>
     </tr>
   </tbody>

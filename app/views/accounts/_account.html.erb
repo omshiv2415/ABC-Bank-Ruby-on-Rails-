@@ -22,7 +22,7 @@
     <% obj.each do |account| %>
       <tr>
 				<td><%= account.customer_id %></td>
-				<td><%= account.name %></td>
+				<td><%= account.name.upcase %></td>
         <td><%= account.accountType %></td>
         <td><%= account.balance %></td>
         <td><%= account.overdraft %></td>
@@ -42,6 +42,8 @@
 <%= link_to 'Opne New Account', new_account_path %>
 
 <div align="center">
+
+<%= will_paginate @accounts%>
 
 </div>
 

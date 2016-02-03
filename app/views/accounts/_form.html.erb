@@ -57,8 +57,8 @@
 
   <div class="form-group">
 		<%= f.label :Branch_Name %><br>
-		<%= f.select :branchName, options_for_select([['Kingston'], ['Croydon'], ['Kensington'], ['Birmingham'], ['Manchester'],
-	['Glasgow'], ['Ulster'], ['New Castle']], params[:branchName]), {}, { :class => "form-control"} %>
+		<%= f.collection_select :branchName, @get_branch, :id, :branchLocation, { prompt: "Select Branch"}, { :class => "form-control"} %>
+
 	</div>
 
   <div class="actions">

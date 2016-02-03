@@ -15,6 +15,7 @@ class EmployeesController < ApplicationController
   # GET /employees/new
   def new
     @employee = Employee.new
+		@get_branch = Branch.all
   end
 
   # GET /employees/1/edit

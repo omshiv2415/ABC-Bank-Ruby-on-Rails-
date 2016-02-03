@@ -7,11 +7,8 @@ class AccountsController < ApplicationController
 
 		if current_user.try(:admin?)
 			@accounts = Account.order(:name).paginate(page: params[:page], per_page: 15)
-
-    #@transactions = Transaction.paginate(page: params[:page], per_page: 10)
 		elsif
-			@accounts = current_user.accounts.order(:name).paginate(page: params[:page], per_page: 15)
-
+			@accounts = current_user.accounts.order(:name).paginate(page: params[:page], per_page: 2)
 		end
 
   end
@@ -26,8 +23,8 @@ class AccountsController < ApplicationController
     @account = Account.new
 		@find = User.all
 		@set_user_account = @find.where("sign_in_count < '2'")
-		#@comments = @post.comments.where("user_id != ''")
-		#@array = User.where(:email, :id.nil?)
+		@get_branch = Branch.all
+
   end
 
   # GET /accounts/1/edit
