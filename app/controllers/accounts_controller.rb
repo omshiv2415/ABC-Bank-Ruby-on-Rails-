@@ -24,11 +24,11 @@ class AccountsController < ApplicationController
 		@find = User.all
 		@set_user_account = @find.where("sign_in_count < '2'")
 		@get_branch = Branch.all
-
   end
 
   # GET /accounts/1/edit
   def edit
+		@get_branch = Branch.all
   end
 
   # POST /accounts

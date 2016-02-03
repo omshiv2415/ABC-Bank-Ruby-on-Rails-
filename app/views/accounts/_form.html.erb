@@ -34,7 +34,7 @@
   </div>
 		<div class="form-group">
 			<%= f.label :Email_Address_Please_ask_customer_Internet_Register_Email_and_Select_From_Following_List %><br>
-			<%= f.collection_select :email, @set_user_account, :id, :email, { prompt: "Select Customer Email Address"}, { :class => "form-control"} %>
+			<%= f.collection_select :email, @set_user_account, :id, :email, {}, { :class => "form-control"} %>
 
 
   </div>
@@ -57,7 +57,7 @@
 
   <div class="form-group">
 		<%= f.label :Branch_Name %><br>
-		<%= f.collection_select :branchName, @get_branch, :id, :branchLocation, { prompt: "Select Branch"}, { :class => "form-control"} %>
+		<%= f.collection_select :branchName, @get_branch, :id, :branchLocation, {}, { :class => "form-control"} %>
 
 	</div>
 
