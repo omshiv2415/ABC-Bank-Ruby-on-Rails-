@@ -1,9 +1,6 @@
 == README
-1. ABC Banking Project Download link from GitHub
 
-https://github.com/omshiv2415/ABC-Bank-Ruby-on-Rails-
-
-2. View Application Online
+1. View Application Online
 
 https://abcbankmsc.herokuapp.com
 
