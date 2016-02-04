@@ -1,9 +1,9 @@
 <div class="page-header">
-	<% if !current_user.try(:admin?) %>
-	<h5 align="left"> <%= @name.upcase %></h5>
+	<% if current_user.verify==true %>
+	<h5 align="left"> <%= Account.find(current_user).name.upcase %></h5>
 	<h5 align="left">Account Number: <%= Account.find(current_user).customer_id %></h5>
-	<h5 align="left">Available Balance: <%= @balance %></h5>
-	<h5 align="left">Overdraft: <%= @overdraft %></h5>
+	<h5 align="left">Available Balance: <%= Account.find(current_user).balance %></h5>
+	<h5 align="left">Overdraft: <%= Account.find(current_user).overdraft %></h5>
 	<% end %>
    <div class="contextual">
   </div>

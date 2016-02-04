@@ -2,7 +2,7 @@ class Transaction < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :account
 
-	accepts_nested_attributes_for :account, :user
+	accepts_nested_attributes_for :account
 
 	validates :amount, :numericality => {:greater_than => 0}
 	validates :transType, presence: true, length: {minimum:1, maximum:50}

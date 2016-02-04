@@ -50,10 +50,10 @@
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
 						<% if logged_in? and not current_user.try(:admin?) %>
-						   <% if !@transactions.blank? %>
+						<% if current_user.verify==true %>
                  <li><%= link_to "Transfer Money", new_transaction_path %></li>
 	               <li><%= link_to "Statement", transactions_path %></li>
-                <% end %>
+              <% end %>
 						<% elsif current_user.try(:admin?) %>
 						<li><%= link_to "Employees", employees_path %></li>
 						<li><%= link_to "Open Account", new_account_path %></li>

@@ -9,19 +9,11 @@ class TransactionsController < ApplicationController
   # GET /transactions.json
 
   def index
-
 		if current_user.admin?
 			@transactions = Transaction.all.order(created_at: :desc).paginate(page: params[:page], per_page: 15)
 		 elsif current_user
-			 @transactions = current_user.transactions.all.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
-			 @accounts =  Account.find(current_user).balance
-			 @balance = @accounts
-		   @accounts =  Account.find(current_user).overdraft
-		 	 @overdraft = @accounts
-			 @accounts =  Account.find(current_user).name
-			 @name = @accounts
+			  @transactions = current_user.transactions.all.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
 		end
-
   end
 
   # GET /transactions/1

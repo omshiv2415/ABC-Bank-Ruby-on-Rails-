@@ -22,7 +22,7 @@ class AccountsController < ApplicationController
   def new
     @account = Account.new
 		@find = User.all
-		@set_user_account = @find.where("sign_in_count < '2'")
+		@set_user_account = @find.where("sign_in_count < '12'")
 		@get_branch = Branch.all
   end
 
@@ -78,8 +78,9 @@ class AccountsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def account_params
-			params.require(:account).permit(:customer_id, :user_id, :accountType, :balance, :overdraft, :branchName, :address, :dob, :email, :postcode, :gender, :name, :phone,
-				                       transactions_attributes: [:transType, :method, :description, :amount, :account_id, :employee_id, :t_balance, :total_balance])
+			params.require(:account).permit(:customer_id, :user_id, :accountType, :balance, :overdraft,
+		  :branchName, :address, :dob, :email, :postcode, :gender, :name, :phone, transactions_attributes:
+			[:transType, :method, :description, :amount, :account_id, :employee_id, :t_balance, :total_balance])
 
     end
 end

@@ -3,7 +3,7 @@ class Account < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :branch
 
-	accepts_nested_attributes_for :transactions
+	accepts_nested_attributes_for :transactions, :user
 
   validates :customer_id, presence: true, length:{minimum:8}
 	validates :accountType, presence: true, length: {minimum:1, maximum:15}
@@ -17,9 +17,18 @@ class Account < ActiveRecord::Base
 	validates :name, presence: true, length: {minimum:1, maximum:70}
 	validates :phone, presence: true, length: {minimum:1, maximum:11}
 	before_save :user_setup
+	after_save :verify_user_account
 
 	def user_setup
-		self.user_id = self.email
+		self.id = self.email
 	end
+
+    private
+
+        def verify_user_account
+					userobject = User.find(self.email)
+					userobject.verify = "true"# settinup user verify column to true
+					userobject.save
+        end
 
 end

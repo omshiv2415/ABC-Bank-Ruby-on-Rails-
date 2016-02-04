@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160131213619) do
+ActiveRecord::Schema.define(version: 20160204183558) do
 
   create_table "accounts", force: :cascade do |t|
     t.integer  "customer_id"
@@ -26,9 +26,10 @@ ActiveRecord::Schema.define(version: 20160131213619) do
     t.string   "gender"
     t.string   "name"
     t.string   "phone"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
     t.integer  "user_id"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "verify",      default: false
   end
 
   create_table "branches", force: :cascade do |t|
@@ -57,9 +58,9 @@ ActiveRecord::Schema.define(version: 20160131213619) do
     t.float    "amount"
     t.integer  "account_id"
     t.integer  "employee_id"
+    t.integer  "user_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.integer  "user_id"
     t.float    "t_balance"
     t.float    "total_balance"
   end
@@ -82,6 +83,7 @@ ActiveRecord::Schema.define(version: 20160131213619) do
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.boolean  "admin",                  default: false
+    t.boolean  "verify",                 default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
