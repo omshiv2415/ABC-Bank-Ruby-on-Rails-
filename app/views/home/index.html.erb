@@ -5,6 +5,10 @@
 <% if current_user.verify==false %>
     <h2 align="center">Welcome to the ABC Bank Internet Banking</h2>
     <h2 align="center">Please wait for the Account Setup and visit our nearest branch</h2>
+    <h3 align="center">Documents List </h3> <br/><br/>
+		<h4 align="center">1. Photo Id (Passport, Driving Licence)</h4>
+		<h4 align="center">2. Address Proof (Utility Bill Phone bill, Gas bill, Water bill)</h4>
+		<h4 align="center">3. Two Photographs (50X50 cm)</h4>
     <% else %>
     <%= render 'transactions/transaction', obj: @transactions%>
     <% end %>

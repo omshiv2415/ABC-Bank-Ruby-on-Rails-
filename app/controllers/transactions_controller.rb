@@ -4,7 +4,7 @@ class TransactionsController < ApplicationController
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
 	before_action :require_user, except: [:index, :show,]
 	before_action :require_same_user, only: [:edit, :update, :destroy]
-
+ require 'bigdecimal'
 
   # GET /transactions
   # GET /transactions.json
@@ -13,7 +13,7 @@ class TransactionsController < ApplicationController
 		if current_user.admin?
 			@transactions = Transaction.all.order(created_at: :desc).paginate(page: params[:page], per_page: 15)
 		 elsif current_user
-			  @transactions = current_user.transactions.all.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+			@transactions = current_user.transactions.all.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
 		end
   end
 
@@ -22,13 +22,10 @@ class TransactionsController < ApplicationController
   def show
   end
 
-
-
-
   # GET /transactions/new
   def new
     @transaction = Transaction.new
-		@updatebalance = Account.all
+		@account = Account.all
 
   end
 
@@ -40,7 +37,15 @@ class TransactionsController < ApplicationController
   def create
     @transaction = Transaction.new(transaction_params)
     respond_to do |format|
-		@transaction.user = current_user
+	 	@transaction.user = current_user
+     #@accounts = Account.find(current_user).balance
+		 #@transaction.total_balance = @accounts
+		 #@transaction.t_balance = @transaction.total_balance - @transaction.amount
+		 # #@transaction.total_balance = @transaction.t_balance
+     #@accounts = @transaction.total_balance
+		 #	Account.find(current_user).balance = @accounts.save
+
+
 
 			if @transaction.save
         format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
@@ -77,10 +82,16 @@ class TransactionsController < ApplicationController
     end
   end
 
+
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_transaction
 			@transaction = Transaction.find(params[:id])
+			@accounts= Account.find(current_user).balance
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

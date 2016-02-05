@@ -16,18 +16,15 @@ class Account < ActiveRecord::Base
 	validates :gender, presence: true
 	validates :name, presence: true, length: {minimum:1, maximum:70}
 	validates :phone, presence: true, length: {minimum:1, maximum:11}
-	#€before_save :user_setup
-	after_save :verify_user_account, :user_setup
+	before_save :user_setup
+	after_save :verify_user_account
 
 	private
 	def user_setup
-		if self.id = self.email
-			self.email = self.email
-		else
+		if self.id.blank?
 			self.id = self.email
 		end
 	end
-
 
     private
 
