@@ -13,9 +13,11 @@ class Transaction < ActiveRecord::Base
 	#before_save :debit
 	after_save :debit
 
-  private
-	def debit
-		 userobject = User.find(current_user)
-  end
+	private
+ 	def debit
+     #histories.create(:date=>Time.now, :username=> User.current_user.username)
+		 #updatebalance = self.transaction.balance - self.amount
+	   #updatebalance.save
+	end
 
 end

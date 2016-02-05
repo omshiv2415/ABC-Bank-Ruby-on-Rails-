@@ -5,6 +5,7 @@ class TransactionsController < ApplicationController
 	before_action :require_user, except: [:index, :show,]
 	before_action :require_same_user, only: [:edit, :update, :destroy]
 
+
   # GET /transactions
   # GET /transactions.json
 
@@ -23,9 +24,12 @@ class TransactionsController < ApplicationController
 
 
 
+
   # GET /transactions/new
   def new
     @transaction = Transaction.new
+		@updatebalance = Account.all
+
   end
 
   # GET /transactions/1/edit
@@ -41,6 +45,7 @@ class TransactionsController < ApplicationController
 			if @transaction.save
         format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
         format.json { render :show, status: :created, location: @transaction }
+
       else
         format.html { render :new }
         format.json { render json: @transaction.errors, status: :unprocessable_entity }

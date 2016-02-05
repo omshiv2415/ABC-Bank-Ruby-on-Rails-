@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
 	end
 
-	def check_user_account
+	def update_balance
 		@account =  Account.all
 	end
 
@@ -20,6 +20,5 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
    end
  end
-
 
 end

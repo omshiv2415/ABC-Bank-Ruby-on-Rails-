@@ -54,7 +54,7 @@
   </div>
   <div class="form-group">
 		<%= f.label :Branch_Name %><br>
-		<%= f.collection_select :branchName, @get_branch, :id, :branchLocation, {}, { :class => "form-control"} %>
+		<%= f.text_field :branchName, :class => "form-control" %>
 	</div>
 
   <div class="actions">
