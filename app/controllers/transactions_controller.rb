@@ -31,17 +31,12 @@ class TransactionsController < ApplicationController
   # GET /transactions/1/edit
   def edit
   end
-	def total_balance
-		  @cal =  Account.find(current_user).balance
-			@total_balance = @cal - amount
-		  @total_balance = total_balance
-	end
   # POST /transactions
   # POST /transactions.json
   def create
     @transaction = Transaction.new(transaction_params)
     respond_to do |format|
-			@transaction.user = current_user
+		@transaction.user = current_user
 
 			if @transaction.save
         format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }

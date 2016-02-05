@@ -22,7 +22,7 @@ class AccountsController < ApplicationController
   def new
     @account = Account.new
 		@find = User.all
-		@set_user_account = @find.where("sign_in_count < '12'")
+		@set_user_account = @find.where(:verify =>  false)
 		@get_branch = Branch.all
   end
 

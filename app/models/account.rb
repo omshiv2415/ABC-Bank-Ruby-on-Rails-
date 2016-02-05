@@ -29,6 +29,6 @@ class Account < ActiveRecord::Base
 					userobject = User.find(self.email)
 					userobject.verify = "true"# settinup user verify column to true
 					userobject.save
-        end
+				end
 
 end
