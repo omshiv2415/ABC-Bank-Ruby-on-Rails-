@@ -30,12 +30,7 @@ class Transaction < ActiveRecord::Base
 		credit.balance = self.total_balance
 		credit.save
 		end
+	end
 
-	end
-	private
-	def  bottom_balance
-		if  self.id == 1
-			self.total_balance = self.t_balance
-	end
 
 end
