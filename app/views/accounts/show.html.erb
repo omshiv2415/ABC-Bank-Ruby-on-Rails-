@@ -1,8 +1,47 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Customer:</strong>
+  <strong>Account Number:</strong>
   <%= @account.customer_id %>
+</p>
+
+<p>
+	<strong>Name:</strong>
+  <%= @account.name %>
+
+</p>
+
+<p>
+	<strong>Gender:</strong>
+  <%= @account.gender %>
+
+</p>
+
+<p>
+	<strong>Dob:</strong>
+  <%= @account.dob.strftime("%m-%d-%Y") %>
+
+</p>
+
+<p>
+	<strong>Address:</strong>
+  <%= @account.address %>
+
+</p>
+
+<p>
+  <strong>Postcode:</strong>
+  <%= @account.postcode %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @account.email %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @account.phone %>
 </p>
 
 <p>
@@ -16,48 +55,14 @@
 </p>
 
 <p>
-  <strong>Overdraft:</strong>
+	<strong>Overdraft:</strong>
   <%= @account.overdraft %>
+
 </p>
 
 <p>
   <strong>Branch:</strong>
 	<%= @account.branchName %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @account.address %>
-</p>
-
-<p>
-  <strong>Dob:</strong>
-  <%= @account.dob %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @account.email %>
-</p>
-
-<p>
-  <strong>Postcode:</strong>
-  <%= @account.postcode %>
-</p>
-
-<p>
-  <strong>Gender:</strong>
-  <%= @account.gender %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @account.name %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @account.phone %>
 </p>
 
 <%= link_to 'Edit Account', edit_account_path(@account) %> |

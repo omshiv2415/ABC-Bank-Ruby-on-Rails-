@@ -41,7 +41,9 @@
   </tbody>
 
 </table>
+<% if !current_user.try(:admin?) %>
 <%= link_to 'New Transaction', new_transaction_path %>
+ <% end %>
 <div align="center">
 <%= will_paginate @transactions %>
 </div>
