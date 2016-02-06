@@ -60,5 +60,7 @@
   <%= @account.phone %>
 </p>
 
-<%= link_to 'Edit', edit_account_path(@account) %> |
+<%= link_to 'Edit Account', edit_account_path(@account) %> |
 <%= link_to 'Back', accounts_path %>
+
+<%= render 'transactions/transaction', obj: @transactions %>

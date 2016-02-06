@@ -23,6 +23,7 @@ class Account < ActiveRecord::Base
 	def user_setup
 		if self.id.blank?
 			self.id = self.email
+			#self.user_id = self.email
 		end
 	end
 

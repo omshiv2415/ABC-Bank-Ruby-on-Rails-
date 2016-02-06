@@ -8,6 +8,7 @@ class AccountsController < ApplicationController
 
 		if current_user.try(:admin?)
 			@accounts = Account.order(:name).paginate(page: params[:page], per_page: 15)
+
 		elsif
 			@accounts = current_user.accounts.order(:name).paginate(page: params[:page], per_page: 2)
 		end
@@ -17,6 +18,8 @@ class AccountsController < ApplicationController
   # GET /accounts/1
   # GET /accounts/1.json
   def show
+		@transactions = Transaction.all.where(:user_id => @account.id).order(created_at: :desc).paginate(page: params[:page], per_page: 15)
+		  #@transactions = current_user.transactions.all.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
   end
 
   # GET /accounts/new

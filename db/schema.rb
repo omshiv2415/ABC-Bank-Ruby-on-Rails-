@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160206150856) do
+ActiveRecord::Schema.define(version: 20160206173703) do
 
   create_table "accounts", force: :cascade do |t|
     t.integer  "customer_id"
@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 20160206150856) do
     t.string   "gender"
     t.string   "name"
     t.string   "phone"
-    t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
