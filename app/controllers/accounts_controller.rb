@@ -18,8 +18,8 @@ class AccountsController < ApplicationController
   # GET /accounts/1
   # GET /accounts/1.json
   def show
-		@transactions = Transaction.all.where(:user_id => @account.id).order(created_at: :desc).paginate(page: params[:page], per_page: 15)
-		  #@transactions = current_user.transactions.all.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+		@transactions = Transaction.all.where(:user_id => @account.id).order(created_at: :desc)
+		.paginate(page: params[:page], per_page: 15)
   end
 
   # GET /accounts/new

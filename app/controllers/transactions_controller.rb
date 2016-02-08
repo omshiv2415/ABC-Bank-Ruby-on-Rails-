@@ -38,20 +38,11 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.new(transaction_params)
     respond_to do |format|
 	 	@transaction.user = current_user
-     #@accounts = Account.find(current_user).balance
-		 #@transaction.total_balance = @accounts
-		 #@transaction.t_balance = @transaction.total_balance - @transaction.amount
-		 # #@transaction.total_balance = @transaction.t_balance
-     #@accounts = @transaction.total_balance
-		 #	Account.find(current_user).balance = @accounts.save
-
-
-
 			if @transaction.save
         format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
         format.json { render :show, status: :created, location: @transaction }
-
       else
+				flash[:danger] ="You can only edit or delete your transaction"
         format.html { render :new }
         format.json { render json: @transaction.errors, status: :unprocessable_entity }
       end
@@ -106,5 +97,7 @@ class TransactionsController < ApplicationController
 				redirect_to transaction_path
 			end
     end
+
+
 
 end

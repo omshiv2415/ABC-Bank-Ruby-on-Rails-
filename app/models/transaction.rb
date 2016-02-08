@@ -13,14 +13,17 @@ class Transaction < ActiveRecord::Base
 	before_save :transaction_update
 	#after_save :debit
 
+
 	private
 	def transaction_update
+
 		if self.transType == 'Transfer'
 				debit = Account.find(user_id)
 				self.total_balance = debit.balance
 				self.t_balance = self.total_balance - self.amount
 				self.total_balance = self.t_balance
-		debit.balance = self.total_balance
+
+    debit.balance = self.total_balance
 		debit.save
 		elsif self.transType == 'Deposit'
 				credit = Account.find(user_id)
