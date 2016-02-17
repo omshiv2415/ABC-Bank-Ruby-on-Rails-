@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
-
+ruby "2.2.4"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
-
+gem 'pdfkit'
 gem 'devise'
-
 gem 'twitter-bootstrap-rails'
-
+gem 'sunspot_rails'
+gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
 gem 'devise-bootstrap-views'
 
 gem 'will_paginate', '3.0.7'

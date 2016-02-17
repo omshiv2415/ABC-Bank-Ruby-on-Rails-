@@ -27,7 +27,7 @@
         <td><%= transaction.transType %></td>
 				<td><%= transaction.account_id %>
         <td><%= transaction.description %></td>
-				<td><%= transaction.amount %></td>
+				<td><%= transaction.amount.to_s %></td>
 				<% if !current_user.try(:admin?) %>
 				<td><%= transaction.total_balance %>
 	      <% end %>

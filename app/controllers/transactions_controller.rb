@@ -11,15 +11,19 @@ class TransactionsController < ApplicationController
 
   def index
 		if current_user.admin?
-			@transactions = Transaction.all.order(created_at: :desc).paginate(page: params[:page], per_page: 15)
-		 elsif current_user
-			@transactions = current_user.transactions.all.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+			@transactions = Transaction.all.order(created_at: :desc)
+			.paginate(page: params[:page], per_page: 15)
+		    elsif current_user
+			@transactions = current_user.transactions.all.order(created_at: :desc)
+			.paginate(page: params[:page], per_page: 10)
 		end
   end
 
   # GET /transactions/1
   # GET /transactions/1.json
   def show
+
+
   end
 
   # GET /transactions/new
@@ -72,11 +76,6 @@ class TransactionsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-
-
-
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_transaction
@@ -87,9 +86,7 @@ class TransactionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def transaction_params
-      params.require(:transaction).permit(:transType, :method, :description, :amount, :account_id, :employee_id,
-				             :t_balance, :total_balance, account_attributes: [:customer_id, :accountType, :balance, :overdraft,
-										 :branchName, :address, :dob, :email, :postcode, :gender, :name, :phone])
+      params.require(:transaction).permit(:transType, :method, :description, :amount, :account_id, :employee_id, :t_balance, :total_balance, account_attributes: [:customer_id, :accountType, :balance, :overdraft, :branchName, :address, :dob, :email, :postcode, :gender, :name, :phone])
     end
 	def  require_same_user
 			if current_user != @transaction.user
@@ -97,7 +94,4 @@ class TransactionsController < ApplicationController
 				redirect_to transaction_path
 			end
     end
-
-
-
 end
